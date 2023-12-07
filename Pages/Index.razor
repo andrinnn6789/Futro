@@ -1,9 +1,96 @@
 ﻿@page "/"
+@using System.Runtime.CompilerServices
+@using Futro.Classes
+@using Futro.Enums
 
-<PageTitle>Index</PageTitle>
+@inject RegistrationStateService RegistrationState
+@inject NavigationManager NavigationManager
 
-<h1>Hello, world!</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in items)
+    {
+        <tr>
+            <td>@item.Participant.Id</td>
+            <td>@item.Participant.FirstName</td>
+            <td>@item.Participant.LastName</td>
+            <td>
+                <button @onclick="() => ViewDetails(item)">🔍 Details</button>
+                <button @onclick="() => DeleteUser(item)">Löschen</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 
-Welcome to your new app.
+@code {
+    private List<Registration> items = new()
+    {
+        new Registration()
+        {
+            Participant = new Participant()
+            {
+                FirstName = "JanisHS",
+                Gender = Gender.Female,
+                TShirtSize = ShirtSize.Size128,
+                Birthdate = DateTime.MaxValue,
+                Club = "HC",
+                Height = "1,23",
+                Id = 2,
+                LastName = "FFFASD",
+                PlaysInClub = false
+            },
+            Representative = new Representative()
+            {
+                Gender = Gender.Female,
+                FirstName = "Andrin",
+                Address = new Address()
+                {
+                    City = "Citydsfljfklöadsjfa",
+                    PostalCode = "OMGEEE 023i4920u4234",
+                    Street = "Skasjdflköadsjgiojareöiogj"
+                },
+                Camp = "ImLinusIdPfresseSchisse",
+                Email = "Linus@scheisse.com",
+                Id = 12,
+                LastName = "Basfsdfjasdlökfj",
+                PhoneNumber = "0791000 und du bbesch grusig",
+                Profession = new List<string>()
+                {
+                    "EiszapfenLutscher"
+                }
+            }
+        }
+    };
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    protected override Task OnInitializedAsync()
+    {
+        return LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        // Laden Sie die Benutzer von einem Service oder einer API
+        // Beispiel:
+        // registration = await userService.GetUsersAsync();
+    }
+
+    private void ViewDetails(Registration registration)
+    {
+        RegistrationState.SetCurrentRegistration(registration);
+        NavigationManager.NavigateTo("/participant-details");
+    }
+
+    private void DeleteUser(Registration registration)
+    {
+    // Implementieren Sie die Löschlogik für den Teilnehmer
+    }
+}

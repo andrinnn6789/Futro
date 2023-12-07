@@ -1,0 +1,46 @@
+﻿@page "/participant-details"
+@inject RegistrationStateService RegistrationStateService
+@using Futro.Classes
+
+@code {
+
+    private Registration Registration => RegistrationStateService.CurrentRegistration;
+    private Participant _participant { get; set; }
+    private Representative _representative { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        _participant = Registration.Participant;
+        _representative = Registration.Representative;
+        return Task.CompletedTask;
+    }
+}
+
+<div class="details-container">
+    <div class="participant-details">
+        <h2>Participant Details</h2>
+        <p>ID: @_participant.Id</p>
+        <p>Name: @_participant.FirstName @_participant.LastName</p>
+        // Add other participant details
+    </div>
+
+    <div class="representative-details">
+        <h2>Representative Details</h2>
+        <p>ID: @_representative.Id</p>
+        <p>Name: @_representative.FirstName @_representative.LastName</p>
+        // Add other representative details
+    </div>
+</div>
+
+<style>
+    .details-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .participant-details, .representative-details {
+        flex: 1;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
