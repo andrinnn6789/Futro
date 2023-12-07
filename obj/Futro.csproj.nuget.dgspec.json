@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro\\Futro.csproj": {}
+    "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro\\Futro.csproj": {
+    "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro\\Futro.csproj",
+        "projectUniqueName": "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro.csproj",
         "projectName": "Futro",
-        "projectPath": "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro\\Futro.csproj",
+        "projectPath": "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro.csproj",
         "packagesPath": "C:\\Users\\aport\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\Futro\\obj\\",
+        "outputPath": "C:\\Users\\aport\\OneDrive\\Dokumente\\Futro\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
