@@ -21,16 +21,27 @@
         <h2>Participant Details</h2>
         <p>ID: @_participant.Id</p>
         <p>Name: @_participant.FirstName @_participant.LastName</p>
-        // Add other participant details
+        <p>Birthdate: @_participant.Birthdate.ToShortDateString()</p>
+        <p>Height: @_participant.Height</p>
+        <p>Gender: @_participant.Gender</p>
+        <p>T-Shirt Size: @_participant.TShirtSize</p>
+        <p>Plays in Club: @_participant.PlaysInClub</p>
+        <p>Club: @_participant.Club</p>
     </div>
 
     <div class="representative-details">
         <h2>Representative Details</h2>
         <p>ID: @_representative.Id</p>
         <p>Name: @_representative.FirstName @_representative.LastName</p>
-        // Add other representative details
+        <p>Email: @_representative.Email</p>
+        <p>Phone Number: @_representative.PhoneNumber</p>
+        <p>Gender: @_representative.Gender</p>
+        <p>Address: @_representative.Address.Street, @_representative.Address.City, @_representative.Address.PostalCode</p>
+        <p>Camp: @_representative.Camp</p>
+        <p>Professions: @string.Join(", ", _representative.Profession)</p>
     </div>
 </div>
+
 
 <style>
     .details-container {
