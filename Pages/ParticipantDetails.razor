@@ -16,42 +16,64 @@
     }
 }
 
+<style>
+    body {
+        background: url('https://img.fcbayern.com/image/upload/cms/public/images/allianz-arena/wallpaper/wallpaper-12.jpg') center center no-repeat;
+        background-size: cover;
+    }
+
+    .details-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .participant-details,
+    .representative-details {
+        width: 45%;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 10px;
+        background-color: rgba(255, 255, 255, 0.8); /* Hintergrundfarbe mit Transparenz */
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+
 <div class="details-container">
     <div class="participant-details">
-        <h2>Participant Details</h2>
-        <p>ID: @_participant.Id</p>
-        <p>Name: @_participant.FirstName @_participant.LastName</p>
-        <p>Birthdate: @_participant.Birthdate.ToShortDateString()</p>
-        <p>Height: @_participant.Height</p>
-        <p>Gender: @_participant.Gender</p>
-        <p>T-Shirt Size: @_participant.TShirtSize</p>
-        <p>Plays in Club: @_participant.PlaysInClub</p>
-        <p>Club: @_participant.Club</p>
+        <h2>Teilnehmer Detail</h2>
+        <ul>
+            <li><strong>Name:</strong> @_participant.FirstName @_participant.LastName</li>
+            <li><strong>Geburtsdatum:</strong> @_participant.Birthdate.ToShortDateString()</li>
+            <li><strong>Größe:</strong> @_participant.Height</li>
+            <li><strong>Geschlecht:</strong> @_participant.Gender</li>
+            <li><strong>T-Shirt Größe:</strong> @_participant.TShirtSize</li>
+            <li><strong>Spielt im Verein:</strong> @_participant.PlaysInClub</li>
+            <li><strong>Verein:</strong> @_participant.Club</li>
+        </ul>
     </div>
 
     <div class="representative-details">
-        <h2>Representative Details</h2>
-        <p>ID: @_representative.Id</p>
-        <p>Name: @_representative.FirstName @_representative.LastName</p>
-        <p>Email: @_representative.Email</p>
-        <p>Phone Number: @_representative.PhoneNumber</p>
-        <p>Gender: @_representative.Gender</p>
-        <p>Address: @_representative.Address.Street, @_representative.Address.City, @_representative.Address.PostalCode</p>
-        <p>Camp: @_representative.Camp</p>
-        <p>Professions: @string.Join(", ", _representative.Profession)</p>
+        <h2>Gesetzlicher Vertreter</h2>
+        <ul>
+            <li><strong>Name:</strong> @_representative.FirstName @_representative.LastName</li>
+            <li><strong>Email:</strong> @_representative.Email</li>
+            <li><strong>Telefonnummer:</strong> @_representative.PhoneNumber</li>
+            <li><strong>Geschlecht:</strong> @_representative.Gender</li>
+            <li><strong>Adresse:</strong> @_representative.Address.Street, @_representative.Address.City, @_representative.Address.PostalCode</li>
+            <li><strong>Camp:</strong> @_representative.Camp</li>
+            <li><strong>Berufe:</strong> @string.Join(", ", _representative.Profession)</li>
+        </ul>
     </div>
 </div>
 
 
-<style>
-    .details-container {
-        display: flex;
-        justify-content: space-between;
-    }
-    .participant-details, .representative-details {
-        flex: 1;
-        padding: 10px;
-        margin: 5px;
-        border: 1px solid #ccc;
-    }
-</style>
