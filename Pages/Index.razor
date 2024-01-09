@@ -116,69 +116,134 @@
         _registrationList = new List<Registration>()
         {
             new()
-            {
-                Participant = new Participant()
-                {
-                    FirstName = "Alice",
-                    LastName = "Smith",
-                    Gender = Gender.Female,
-                    Birthdate = new DateTime(2010, 1, 15),
-                    Club = "Red Hawks",
-                    Height = "1.40",
-                    Id = 1,
-                    PlaysInClub = true,
-                    TShirtSize = ShirtSize.Size140
-                },
-                Representative = new Representative()
-                {
-                    FirstName = "John",
-                    LastName = "Smith",
-                    Gender = Gender.Male,
-                    Address = new Address()
-                    {
-                        Street = "123 Elm St",
-                        City = "Springfield",
-                        PostalCode = "12345"
-                    },
-                    Camp = "Summer Sports Camp",
-                    Email = "john.smith@email.com",
-                    Id = 1,
-                    PhoneNumber = "555-1234",
-                    Profession = new List<string> {"Teacher"}
-                }
-            },
-            new()
-            {
-                Participant = new Participant()
-                {
-                    FirstName = "Max",
-                    LastName = "Jones",
-                    Gender = Gender.Male,
-                    Birthdate = new DateTime(2009, 4, 22),
-                    Club = "Blue Warriors",
-                    Height = "1.45",
-                    Id = 2,
-                    PlaysInClub = true,
-                    TShirtSize = ShirtSize.Size152
-                },
-                Representative = new Representative()
-                {
-                    FirstName = "Linda",
-                    LastName = "Jones",
-                    Gender = Gender.Female,
-                    Address = new Address()
-                    {
-                        Street = "456 Maple Ave",
-                        City = "Greenwood",
-                        PostalCode = "23456"
-                    },
-                    Camp = "Nature Explorers Camp",
-                    Email = "linda.jones@email.com",
-                    Id = 2,
-                    PhoneNumber = "555-5678",
-                    Profession = new List<string> {"Engineer"}
-                }
-            },
+{
+    Participant = new Participant()
+    {
+        FirstName = "Eva",
+        LastName = "Johnson",
+        Gender = Gender.Female,
+        Birthdate = new DateTime(2011, 8, 5),
+        Club = "Green Eagles",
+        Height = "1.35",
+        Id = 3,
+        PlaysInClub = true,
+        TShirtSize = ShirtSize.Size128
+    },
+    Representative = new Representative()
+    {
+        FirstName = "Mike",
+        LastName = "Johnson",
+        Gender = Gender.Male,
+        Address = new Address()
+        {
+            Street = "789 Oak Ln",
+            City = "Meadowville",
+            PostalCode = "34567"
+        },
+        Camp = "Adventure Seekers Camp",
+        Email = "mike.johnson@email.com",
+        Id = 3,
+        PhoneNumber = "555-9876",
+        Profession = new List<string> { "Explorer" }
+    }
+},
+new()
+{
+    Participant = new Participant()
+    {
+        FirstName = "Sophie",
+        LastName = "Brown",
+        Gender = Gender.Female,
+        Birthdate = new DateTime(2010, 3, 18),
+        Club = "Yellow Tigers",
+        Height = "1.38",
+        Id = 4,
+        PlaysInClub = true,
+        TShirtSize = ShirtSize.Size140
+    },
+    Representative = new Representative()
+    {
+        FirstName = "David",
+        LastName = "Brown",
+        Gender = Gender.Male,
+        Address = new Address()
+        {
+            Street = "567 Pine Blvd",
+            City = "Woodland",
+            PostalCode = "45678"
+        },
+        Camp = "Art and Creativity Camp",
+        Email = "david.brown@email.com",
+        Id = 4,
+        PhoneNumber = "555-4321",
+        Profession = new List<string> { "Artist" }
+    }
+},
+new()
+{
+    Participant = new Participant()
+    {
+        FirstName = "Olivia",
+        LastName = "Davis",
+        Gender = Gender.Female,
+        Birthdate = new DateTime(2008, 6, 10),
+        Club = "Purple Panthers",
+        Height = "1.52",
+        Id = 5,
+        PlaysInClub = true,
+        TShirtSize = ShirtSize.Size164
+    },
+    Representative = new Representative()
+    {
+        FirstName = "Chris",
+        LastName = "Davis",
+        Gender = Gender.Male,
+        Address = new Address()
+        {
+            Street = "890 Cedar Rd",
+            City = "Hilltop",
+            PostalCode = "56789"
+        },
+        Camp = "Science Enthusiasts Camp",
+        Email = "chris.davis@email.com",
+        Id = 5,
+        PhoneNumber = "555-8765",
+        Profession = new List<string> { "Scientist" }
+    }
+},
+new()
+{
+    Participant = new Participant()
+    {
+        FirstName = "Emma",
+        LastName = "Miller",
+        Gender = Gender.Female,
+        Birthdate = new DateTime(2009, 11, 25),
+        Club = "Orange Owls",
+        Height = "1.42",
+        Id = 6,
+        PlaysInClub = true,
+        TShirtSize = ShirtSize.Size146
+    },
+    Representative = new Representative()
+    {
+        FirstName = "Mark",
+        LastName = "Miller",
+        Gender = Gender.Male,
+        Address = new Address()
+        {
+            Street = "901 Walnut St",
+            City = "Riverside",
+            PostalCode = "67890"
+        },
+        Camp = "Music Lovers Camp",
+        Email = "mark.miller@email.com",
+        Id = 6,
+        PhoneNumber = "555-2345",
+        Profession = new List<string> { "Musician" }
+    }
+},
+
         };
         return Task.CompletedTask;
     }
