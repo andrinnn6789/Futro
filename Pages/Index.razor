@@ -61,6 +61,11 @@
     }
 </style>
 
+<div class="filter-container">
+    <input type="text" @bind="filterText" placeholder="Filter">
+    <button @onclick="FilterData">Filter</button>
+</div>
+
 <div class="table-container">
     <table class="table">
         <thead>
@@ -73,19 +78,19 @@
         </tr>
         </thead>
         <tbody>
-            @foreach (var item in items)
+            @foreach (var registration in _registrationList.Where(r => r.Participant.FirstName.Contains(filterText, StringComparison.OrdinalIgnoreCase) || r.Participant.LastName.Contains(filterText, StringComparison.OrdinalIgnoreCase) || r.Representative.Camp.Contains(filterText, StringComparison.OrdinalIgnoreCase)))
             {
                 <tr>
-                    <td>@item.Participant.Id</td>
-                    <td>@item.Participant.FirstName</td>
-                    <td>@item.Participant.LastName</td>
-                    <td>@item.Representative.Camp</td>
+                    <td>@registration.Participant.Id</td>
+                    <td>@registration.Participant.FirstName</td>
+                    <td>@registration.Participant.LastName</td>
+                    <td>@registration.Representative.Camp</td>
                     <td>
                         <div class="actions">
-                            <button class="btn edit" @onclick="() => ViewDetails(item)">
+                            <button class="btn edit" @onclick="() => ViewDetails(registration)">
                                 <span class="icon">✏️</span> Bearbeiten
                             </button>
-                            <button class="btn delete" @onclick="() => DeleteUser(item)">
+                            <button class="btn delete" @onclick="() => DeleteUser(registration)">
                                 <span class="icon">🗑️</span> Löschen
                             </button>
                         </div>
@@ -96,91 +101,86 @@
     </table>
 </div>
 
-
-
 @code {
+    List<Registration> _registrationList = new List<Registration>();
 
-    List<Registration> items = new List<Registration>()
-    {
-        // Registration 1
-        new Registration()
-        {
-            Participant = new Participant()
-            {
-                FirstName = "Alice",
-                LastName = "Smith",
-                Gender = Gender.Female,
-                Birthdate = new DateTime(2010, 1, 15),
-                Club = "Red Hawks",
-                Height = "1.40",
-                Id = 1,
-                PlaysInClub = true,
-                TShirtSize = ShirtSize.Size140
-            },
-            Representative = new Representative()
-            {
-                FirstName = "John",
-                LastName = "Smith",
-                Gender = Gender.Male,
-                Address = new Address()
-                {
-                    Street = "123 Elm St",
-                    City = "Springfield",
-                    PostalCode = "12345"
-                },
-                Camp = "Summer Sports Camp",
-                Email = "john.smith@email.com",
-                Id = 1,
-                PhoneNumber = "555-1234",
-                Profession = new List<string> { "Teacher" }
-            }
-        },
-        // Registration 2
-        new Registration()
-        {
-            Participant = new Participant()
-            {
-                FirstName = "Max",
-                LastName = "Jones",
-                Gender = Gender.Male,
-                Birthdate = new DateTime(2009, 4, 22),
-                Club = "Blue Warriors",
-                Height = "1.45",
-                Id = 2,
-                PlaysInClub = true,
-                TShirtSize = ShirtSize.Size152
-            },
-            Representative = new Representative()
-            {
-                FirstName = "Linda",
-                LastName = "Jones",
-                Gender = Gender.Female,
-                Address = new Address()
-                {
-                    Street = "456 Maple Ave",
-                    City = "Greenwood",
-                    PostalCode = "23456"
-                },
-                Camp = "Nature Explorers Camp",
-                Email = "linda.jones@email.com",
-                Id = 2,
-                PhoneNumber = "555-5678",
-                Profession = new List<string> { "Engineer" }
-            }
-        },
-    };
-
+    string filterText = "";
 
     protected override Task OnInitializedAsync()
     {
         return LoadUsers();
     }
 
-    private async Task LoadUsers()
+    private Task LoadUsers()
     {
-        // Laden Sie die Benutzer von einem Service oder einer API
-        // Beispiel:
-        // registration = await userService.GetUsersAsync();
+        _registrationList = new List<Registration>()
+        {
+            new()
+            {
+                Participant = new Participant()
+                {
+                    FirstName = "Alice",
+                    LastName = "Smith",
+                    Gender = Gender.Female,
+                    Birthdate = new DateTime(2010, 1, 15),
+                    Club = "Red Hawks",
+                    Height = "1.40",
+                    Id = 1,
+                    PlaysInClub = true,
+                    TShirtSize = ShirtSize.Size140
+                },
+                Representative = new Representative()
+                {
+                    FirstName = "John",
+                    LastName = "Smith",
+                    Gender = Gender.Male,
+                    Address = new Address()
+                    {
+                        Street = "123 Elm St",
+                        City = "Springfield",
+                        PostalCode = "12345"
+                    },
+                    Camp = "Summer Sports Camp",
+                    Email = "john.smith@email.com",
+                    Id = 1,
+                    PhoneNumber = "555-1234",
+                    Profession = new List<string> {"Teacher"}
+                }
+            },
+            new()
+            {
+                Participant = new Participant()
+                {
+                    FirstName = "Max",
+                    LastName = "Jones",
+                    Gender = Gender.Male,
+                    Birthdate = new DateTime(2009, 4, 22),
+                    Club = "Blue Warriors",
+                    Height = "1.45",
+                    Id = 2,
+                    PlaysInClub = true,
+                    TShirtSize = ShirtSize.Size152
+                },
+                Representative = new Representative()
+                {
+                    FirstName = "Linda",
+                    LastName = "Jones",
+                    Gender = Gender.Female,
+                    Address = new Address()
+                    {
+                        Street = "456 Maple Ave",
+                        City = "Greenwood",
+                        PostalCode = "23456"
+                    },
+                    Camp = "Nature Explorers Camp",
+                    Email = "linda.jones@email.com",
+                    Id = 2,
+                    PhoneNumber = "555-5678",
+                    Profession = new List<string> {"Engineer"}
+                }
+            },
+        };
+        return Task.CompletedTask;
     }
 
     private void ViewDetails(Registration registration)
@@ -191,6 +191,12 @@
 
     private void DeleteUser(Registration registration)
     {
-    // Implementieren Sie die Löschlogik für den Teilnehmer
+        _registrationList.Remove(registration);
+        StateHasChanged();
+    }
+
+    private void FilterData()
+    {
+        StateHasChanged();
     }
 }
